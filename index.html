@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Password Generator</title>
+	<script src="pwgen.js" type="text/javascript"></script>
+	<script>
+		function doForm()
+		{
+			const mypass = genPassword(
+				document.getElementById("pwlen").value,
+				document.getElementById("spec").checked,
+				document.getElementById("aupp").checked,
+				document.getElementById("alow").checked,
+				document.getElementById("nums").checked,
+			);
+
+			document.getElementById("output").value = mypass;
+
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<form onsubmit="return doForm()">
+		<label>
+			<input id="pwlen" type="number" min="8" max="128" step="1" placeholder="Length" value="16" required>
+			Password Length
+		</label>
+		<br />
+		<label>
+			<input id="alow" type="checkbox" checked>
+			Use lower case letters? (abc...)
+		</label>
+		<br />
+		<label>
+			<input id="aupp" type="checkbox" checked>
+			Use upper case letters? (ABC...)
+		</label>
+		<br />
+		<label>
+			<input id="nums" type="checkbox" checked>
+			Use numbers? (123...)
+		</label>
+		<br />
+		<label>
+			<input id="spec" type="checkbox">
+			Use special? ($@!...)
+		</label>
+		<br />
+		<label>&#x1F511;
+			<input id="output" type="text" placeholder="Output">
+		</label>
+		<br />
+		<input type="submit" value="Generate">
+	</form>
+</body>
+</html>
